@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز المطعم الحديث | Modern Restaurant Center</title>
+    
+    <!-- Google Fonts - Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==================== ROOT VARIABLES & RESET ==================== */
+        :root {
+            --primary-color: #c59d5f;
+            --primary-hover: #b0884b;
+            --bg-dark: #0f141e;
+            --bg-card: #18202e;
+            --bg-light: #f8f9fa;
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dark: #1f2937;
+            --accent-red: #e74c3c;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ==================== BUTTONS ==================== */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(197, 157, 95, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ==================== HEADER & NAVBAR ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            background-color: rgba(15, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 20, 30, 0.75), rgba(15, 20, 30, 0.85)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* ==================== FEATURES SECTION ==================== */
+        .features {
+            background-color: #131924;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(197, 157, 95, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+        }
+
+        .about-img img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .about-experience .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* ==================== MENU SECTION ==================== */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .menu-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .menu-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-red);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .menu-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .menu-price {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .menu-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+
+        .rating {
+            color: #f1c40f;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart {
+            background: rgba(197, 157, 95, 0.15);
+            color: var(--primary-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* ==================== RESERVATION SECTION ==================== */
+        .reservation {
+            background: linear-gradient(rgba(15, 20, 30, 0.9), rgba(15, 20, 30, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+        }
+
+        .reservation-box {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .reservation-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .form-control {
+            background: #0f141e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* ==================== TESTIMONIALS ==================== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-details h4 {
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .user-details span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: #090c13;
+            padding-top: 70px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            background-color: #05070a;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            .about-experience {
+                bottom: 10px;
+                right: 10px;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-dark);
+                flex-direction: column;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .reservation-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span>الحديث</span> مركز المطعم
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#about" class="nav-link">من نحن</a></li>
+                <li><a href="#menu" class="nav-link">قائمة الطعام</a></li>
+                <li><a href="#features" class="nav-link">مميزاتنا</a></li>
+                <li><a href="#reservation" class="nav-link">حجز طاولة</a></li>
+                <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <p class="hero-subtitle">أهلاً بكم في مركز المطعم الحديث</p>
+            <h1 class="hero-title">تذوق الفخامة والأصالة في كل طبق</h1>
+            <p class="hero-description">نقدم لكم تجربة طهي فريدة تجمع بين أسرار المطبخ الشرقي الاصيل ولمسات المطبخ العالمي العصري على أيدي أفضل الطهاة.</p>
+            <div class="hero-btns">
+                <a href="#reservation" class="btn btn-primary">احجز طاولتك الآن</a>
+                <a href="#menu" class="btn btn-outline">استكشف القائمة</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features section-padding" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تختارنا؟</h2>
+                <p>نلتزم بتقديم أعلى مستويات الجودة والخدمة لضيوفنا الكرام</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3 class="feature-title">مكونات طازجة</h3>
+                    <p class="feature-desc">نختار مكوناتنا يومياً بعناية فائقة لضمان تقديم أطباق صحية وطازجة دائماً.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+                    <h3 class="feature-title">طهاة عالميون</h3>
+                    <p class="feature-desc">فريق محترف من الطهاة المبدعين ذوي الخبرة العالمية في إعداد أشهى الأطباق.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-wine-glass"></i></div>
+                    <h3 class="feature-title">أجواء راقية</h3>
+                    <p class="feature-desc">تصميم عصري وجو مريح يناسب العائلات واللقاءات الرسمية والمناسبات الخاصة.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3 class="feature-title">خدمة توصيل سريعة</h3>
+                    <p class="feature-desc">نوصل أطباقك المفضلة ساخنة وطازجة إلى باب منزلك بأسرع وقت ممكن.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about section-padding" id="about">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="عن المطعم">
+                <div class="about-experience">
+                    <span class="number">15+</span>
+                    <p>عاماً من الخبرة</p>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>قصتنا في تقديم المذاق الفريد</h3>
+                <p>تأسس "مركز المطعم الحديث" بهدف إعادة تعريف تجربة تناول الطعام. نحن نؤمن بأن الطعام ليس مجرد وجبة، بل هو تجربة متكاملة تشمل المذاق، الأجواء، والخدمة الاستثنائية.</p>
+                <p>نجمع بين الوصفات التقليدية والتقنيات الحديثة لنقدم لكم أطباقاً تتجاوز التوقعات، مع الاهتمام بأدق التفاصيل من المزرعة إلى طبقك.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>50+</h4>
+                        <p>طبق مميز</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100k+</h4>
+                        <p>زبون سعيد</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>25+</h4>
+                        <p>طاهٍ محترف</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu section-padding" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>قائمة الطعام</h2>
+                <p>تصفح مجموعة مختارة من أشهى أطباقنا المجهزة بحب</p>
+            </div>
+
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="all">الكل</button>
+                <button class="tab-btn" data-category="main">الأطباق الرئيسية</button>
+                <button class="tab-btn" data-category="appetizer">المقبلات</button>
+                <button class="tab-btn" data-category="dessert">الحلويات</button>
+                <button class="tab-btn" data-category="drinks">المشروبات</button>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-card" data-category="main">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="ستيك اللحم الفاخر">
+                        <span class="menu-badge">الأكثر طلباً</span>
+                    </div>
+                    <div class="menu-details">
+                        <div class="menu-header">
+                            <h3 class="menu-title">ستيك التندرلوين الفاخر</h3>
+                            <span class="menu-price">120 ر.س</span>
+                        </div>
+                        <p class="menu-desc">قطعة لحم تندرلوين مشوية حسب الطلب تقدم مع الخضار المشوية وصوص الفطر الغني.</p>
+                        <div class="menu-footer">
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.9</div>
+                            <button class="add-to-cart"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-card" data-category="main">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" alt="سلمون مشوي">
+                    </div>
+                    <div class="menu-details">
+                        <div class="menu-header">
+                            <h3 class="menu-title">سلمون مشوي بالأعشاب</h3>
+                            <span class="menu-price">95 ر.س</span>
+                        </div>
+                        <p class="menu-desc">شريحة سلمون طازجة مشوية مع التوابل الخاصة وصوص الليمون والزبدة.</p>
+                        <div class="menu-footer">
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.8</div>
+                            <button class="add-to-cart"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-card" data-category="appetizer">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="سلطة قيصر">
+                    </div>
+                    <div class="menu-details">
+                        <div class="menu-header">
+                            <h3 class="menu-title">سلطة سيزر بالدجاج</h3>
+                            <span class="menu-price">45 ر.س</span>
+                        </div>
+                        <p class="menu-desc">خس طازج مع قطع الدجاج المشوي، جبنة البارميزان، والخبز المحمص مع الدريسنج الخاص.</p>
+                        <div class="menu-footer">
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.7</div>
+                            <button class="add-to-cart"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-card" data-category="appetizer">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80" alt="مقبلات مشكلة">
+                        <span class="menu-badge">جديد</span>
+                    </div>
+                    <div class="menu-details">
+                        <div class="menu-header">
+                            <h3 class="menu-title">طبق مقبلات شرقية</h3>
+                            <span class="menu-price">55 ر.س</span>
+                        </div>
+                        <p class="menu-desc">تشكيلة فاخرة من الحمص، المتبل، بابا غنوج، والتبولة تقدم مع الخبز الساخن.</p>
+                        <div class="menu-footer">
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.9</div>
+                            <button class="add-to-cart"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-card" data-category="dessert">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="حلوى الشوكولاتة">
+                    </div>
+                    <div class="menu-details">
+                        <div class="menu-header">
+                            <h3 class="menu-title">فوندان الشوكولاتة</h3>
+                            <span class="menu-price">40 ر.س</span>
+                        </div>
+                        <p class="menu-desc">كيك الشوكولاتة الساخن مع قلب الشوكولاتة الذائبة يقدم مع آيس كريم الفانيليا.</p>
+                        <div class="menu-footer">
+                            <div class="rating"><i class="fa-solid fa-star"></i> 5.0</div>
+                            <button class="add-to-cart"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-card" data-category="drinks">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="عصير طازج">
+                    </div>
+                    <div class="menu-details">
+                        <div class="menu-header">
+                            <h3 class="menu-title">كوكتيل الفواكه الاستوائية</h3>
+                            <span class="menu-price">25 ر.س</span>
+                        </div>
+                        <p class="menu-desc">مزج منعش من المانجو، الأناناس، والفرولة الطازجة بدون إضافة سكر.</p>
+                        <div class="menu-footer">
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.6</div>
+                            <button class="add-to-cart"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION SECTION -->
+    <section class="reservation section-padding" id="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>حجز طاولة</h2>
+                <p>احجز طاولتك مسبقاً لتضمن أفضل تجربة لك ولعائلتك</p>
+            </div>
+
+            <div class="reservation-box">
+                <form class="reservation-form" id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-control" placeholder="أدخل اسمك" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="05xxxxxxxx" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">التاريخ</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">الوقت</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guests">عدد الأشخاص</label>
+                        <select id="guests" class="form-control" required>
+                            <option value="1">شخص واحد</option>
+                            <option value="2">شخصان</option>
+                            <option value="4">4 أشخاص</option>
+                            <option value="6">6 أشخاص أو أكثر</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="section">الجلسة</label>
+                        <select id="section" class="form-control">
+                            <option value="indoor">داخلية (مكيفة)</option>
+                            <option value="outdoor">خارجية (في الهواء الطلق)</option>
+                            <option value="vip">جناح خاص (VIP)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="notes">ملاحظات خاصة</label>
+                        <textarea id="notes" class="form-control" rows="3" placeholder="أي طلبات خاصة (مثال: احتفال بمناسبة، كوسي أطفال...)"></textarea>
+                    </div>
+
+                    <div class="form-group full-width" style="text-align: center; margin-top: 10px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 300px;">تأكيد الحجز</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء العملاء</h2>
+                <p>نعتز بثقة زبائننا وشهادتهم في حقنا</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="testimonial-text">"تجربة رائعة جداً! الأكل لذيذ وطازج والخدمة على أعلى مستوى من الاحترافية. الستيك كان مطبوخاً بإتقان."</p>
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="عميل" class="user-avatar">
+                        <div class="user-details">
+                            <h4>أحمد الشهري</h4>
+                            <span>عميل دائم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="testimonial-text">"المكان هادئ وراقي جداً ومناسب للعائلات. المشروبات والمقبلات عندهم ممتازة، والتصميم الداخلي للمطعم مذهل."</p>
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="عميل" class="user-avatar">
+                        <div class="user-details">
+                            <h4>سارة العتيبي</h4>
+                            <span>زائرة جديدة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="testimonial-text">"أفضل مطعم يقدم أطباقاً عالمية بنكهة فريدة. طاقم العمل بشوش وخدمة الحجز كانت سهلة وسريعة للغاية."</p>
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80" alt="عميل" class="user-avatar">
+                        <div class="user-details">
+                            <h4>محمد القحطاني</h4>
+                            <span>ناقد طعام</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>مركز المطعم الحديث</h3>
+                <p>وجهتك الأولى لتذوق أشهى الأطباق الشرقية والعالمية في أجواء مفعمة بالفخامة والراحة.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-snapchat"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#menu">قائمة الطعام</a></li>
+                    <li><a href="#reservation">حجز طاولة</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>أوقات العمل</h3>
+                <p>السبت - الأربعاء:<br>12:00 ظهراً - 12:00 منتصف الليل</p>
+                <p>الخميس - الجمعة:<br>01:00 ظهراً - 02:00 صباحاً</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>معلومات التواصل</h3>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-location-dot"></i> شارع الملك فهد، الرياض، المملكة العربية السعودية</li>
+                    <li><i class="fa-solid fa-phone"></i> +966 11 123 4567</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@modernrestaurant.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>جميع الحقوق محفوظة &copy; 2023 - مركز المطعم الحديث</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-xmark');
+            });
+        });
+
+        // Menu Filtering
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const category = btn.getAttribute('data-category');
+
+                menuCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Submission Alert
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('شكراً لك! تم استلام طلب حجزك بنجاح. سنقوم بالتواصل معك قريباً للتأكيد.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
