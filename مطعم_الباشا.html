@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم الباشا - الأصالة والمذاق الشرقي</title>
+    <!-- خط تجوال من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* المتغيرات الأساسية والتنسيقات العامة */
+        :root {
+            --primary-color: #c59d5f;
+            --primary-hover: #a37f43;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --light-bg: #282828;
+            --text-color: #ffffff;
+            --text-muted: #b0b0b0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: -5px;
+            right: 25%;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* القائمة العلوية Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 157, 95, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* القسم الرئيسي Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* قسم المميزات */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* قسم قائمة الطعام Menu */
+        .menu {
+            padding: 80px 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: scale(1.02);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .menu-price {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .menu-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* قسم عن المطعم */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* قسم الحجز Reservation */
+        .reservation {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--dark-bg);
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* التذييل Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col li {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* تجاوب الشاشات Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- القائمة العلوية -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-utensils"></i> مطعم الباشا
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#menu">قائمة الطعام</a></li>
+                <li><a href="#reservation">حجز طاولة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>أصالة المذاق الشرقي الفاخر</h1>
+            <p>نقدم لكم أشهى المشويات والأطباق الشرقية المجهزة بأعلى معايير الجودة والأصالة على أيدي أشهر الطهاة.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn">استكشف القائمة</a>
+                <a href="#reservation" class="btn btn-outline">احجز طاولتك الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="features">
+        <div class="container features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-drumstick-bite"></i>
+                <h3>لحوم طازجة</h3>
+                <p>نستخدم أجود أنواع اللحوم الطازجة يومياً لضمان طعم لا يُنسى.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-award"></i>
+                <h3>جودة عالية</h3>
+                <p>نلتزم بأعلى معايير النظافة والجودة في إعداد وتقديم طعامنا.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-users"></i>
+                <h3>أجواء عائلية</h3>
+                <p>تصاميم دافئة وجلسات مريحة تناسب جميع العائلات والمناسبات.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-motorcycle"></i>
+                <h3>توصيل سريع</h3>
+                <p>خدمة توصيل سريعة تحافظ على حرارة وطعم الوجبات المميز.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="about" id="about">
+        <div class="container about-wrapper">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="مطعم الباشا">
+            </div>
+            <div class="about-content">
+                <h2>عن مطعم الباشا</h2>
+                <p>تأسس مطعم الباشا ليكون وجهتك الأولى لعشاق الطعام الشرقي الأصيل. نحن نفخر بتقديم وصفات توارثناها عبر الأجيال، ممزوجة بلمسة عصريّة تضمن لك تجربة استثنائية.</p>
+                <p>كل طبق يقدم في مطعمنا يروي قصة حب للطهي واهتمام بأدق التفاصيل، بدءاً من اختيار المكونات الطازجة وحتى تقديمها على طاولتك.</p>
+                <a href="#reservation" class="btn">تعرف علينا أكثر</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم قائمة الطعام -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>قائمة الطعام المميزة</h2>
+                <p>اختر من بين تشكيلتنا المتنوعة من الأطباق الشرقية الشهية</p>
+            </div>
+
+            <div class="menu-grid">
+                <!-- عنصر 1 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="مشاوي مشكلة" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header">
+                            <span class="menu-title">مشاوي الباشا المشكلة</span>
+                            <span class="menu-price">120 ر.س</span>
+                        </div>
+                        <p class="menu-desc">تشكيلة من الكباب، الكفتة، وشيش طاووق المشوي على الفحم مع الأرز والمقبلات.</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 2 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" alt="طاجن بامية باللحم" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header">
+                            <span class="menu-title">طاجن لحم بالفرن</span>
+                            <span class="menu-price">85 ر.س</span>
+                        </div>
+                        <p class="menu-desc">قطع اللحم الضأن المطهوة ببطء في الفخار مع الخضار الصيفية والتوابل الشرقية.</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 3 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="مقبلات شرقية" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header">
+                            <span class="menu-title">صحن مقبلات مشكل</span>
+                            <span class="menu-price">45 ر.س</span>
+                        </div>
+                        <p class="menu-desc">حمص، متبل، تبولة، وورق عنب محضر طازجاً بشكل يومي.</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 4 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=600&q=80" alt="شيش طاووق" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header">
+                            <span class="menu-title">شيش طاووق فاخر</span>
+                            <span class="menu-price">65 ر.س</span>
+                        </div>
+                        <p class="menu-desc">قطع دجاج متبلة بالزبادي والبهارات الخاصة، مشوية على الفحم.</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 5 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="أضلاع خروف" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header">
+                            <span class="menu-title">ريش غنم مشوية</span>
+                            <span class="menu-price">110 ر.س</span>
+                        </div>
+                        <p class="menu-desc">ريش طازجة متبلة بالخلطة الملكية ومشوية بدرجة إتقان عالية.</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 6 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="حلويات شرقية" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header">
+                            <span class="menu-title">كنافة بالمكسرات</span>
+                            <span class="menu-price">35 ر.س</span>
+                        </div>
+                        <p class="menu-desc">كنافة ذهبية مقرمشة محشوة بالقشطة الطازجة والمكسرات والمشروبة بالقطر.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الحجز -->
+    <section class="reservation" id="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>احجز طاولتك</h2>
+                <p>انضم إلينا لقضاء وقت ممتع وتجربة طعام استثنائية</p>
+            </div>
+
+            <form class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="الاسم الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="رقم الهاتف" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="time" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" required>
+                        <option value="" disabled selected>عدد الأشخاص</option>
+                        <option value="1">شخص واحد</option>
+                        <option value="2">شخصين</option>
+                        <option value="4">4 أشخاص</option>
+                        <option value="6">عائلة (6+ أشخاص)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">تأكيد الحجز</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- التذييل Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>مطعم الباشا</h4>
+                    <p>عنوان الأصالة والطعم الشرقي اللذيذ. نرحب بكم يومياً لنقدم لكم أفضل خدمة وأشهى الأطباق.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط السريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#menu">قائمة الطعام</a></li>
+                        <li><a href="#reservation">حجز طاولة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>أوقات العمل</h4>
+                    <p>السبت - الخميس: 12:00 م - 12:00 ص</p>
+                    <p>الجمعة: 1:00 م - 1:00 ص</p>
+                </div>
+                <div class="footer-col">
+                    <h4>معلومات التواصل</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> الرياض، شارع الملك فهد</p>
+                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+                    <p><i class="fas fa-envelope"></i> info@albasharestaurant.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 لمطعم الباشا</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- جافاسكريبت بسيط للتجاوب مع الهاتف -->
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // إغلاق القائمة عند الضغط على أي رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
