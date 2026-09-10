@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مؤسسة النخبة لخدمات المطاعم والضيافة</title>
-    <!-- Google Fonts - Cairo -->
+    <title>مؤسسة أطياب للخدمات الغذائية وإدارة المطاعم</title>
+    <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/org/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #C8102E; /* أحمر فاخر */
-            --primary-dark: #900C21;
-            --secondary-color: #D4AF37; /* ذهبي */
-            --dark-color: #1A1A1A;
-            --light-color: #F9F9F9;
-            --gray-color: #666666;
-            --gray-light: #F0F2F5;
-            --white: #FFFFFF;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease-in-out;
-            --radius: 12px;
+            --primary-color: #c2410c; /* أورانج ناري دافئ للمطاعم */
+            --primary-hover: #ea580c;
+            --secondary-color: #1e293b; /* كحلي دكن فخم */
+            --accent-color: #f59e0b; /* ذهبي / أصفر دافئ */
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
         }
 
         * {
@@ -31,12 +34,15 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--white);
-            color: var(--dark-color);
+            background-color: var(--bg-light);
+            color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
         }
@@ -52,35 +58,66 @@
         }
 
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
         }
 
         .btn {
             display: inline-block;
             padding: 12px 32px;
             border-radius: 30px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
             border: none;
-            outline: none;
             transition: var(--transition);
-            text-align: center;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(194, 65, 12, 0.3);
         }
 
         .btn-secondary {
@@ -91,63 +128,27 @@
 
         .btn-secondary:hover {
             background-color: var(--white);
-            color: var(--dark-color);
-            transform: translateY(-3px);
+            color: var(--secondary-color);
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header .subtitle {
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .section-header .title {
-            font-size: 2.3rem;
-            font-weight: 800;
-            color: var(--dark-color);
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-header .title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
-        }
-
-        /* --- Header / Navigation --- */
-        header {
+        /* --- Header / Navbar --- */
+        .header {
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
             z-index: 1000;
             transition: var(--transition);
         }
 
-        .navbar {
+        .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 85px;
+            height: 80px;
         }
 
         .logo {
@@ -156,28 +157,32 @@
             gap: 10px;
             font-size: 1.6rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .logo i {
-            color: var(--secondary-color);
-            font-size: 2rem;
+            color: var(--primary-color);
+            font-size: 1.8rem;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
             align-items: center;
             gap: 30px;
         }
 
-        .nav-links a {
+        .nav-link {
             font-weight: 600;
-            color: var(--dark-color);
-            font-size: 1.05rem;
+            color: var(--secondary-color);
+            font-size: 1rem;
             position: relative;
         }
 
-        .nav-links a::after {
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -188,65 +193,58 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a:hover::after {
+        .nav-link:hover::after, .nav-link.active::after {
             width: 100%;
         }
 
-        .menu-toggle {
+        .menu-btn {
             display: none;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: var(--dark-color);
+            color: var(--secondary-color);
         }
 
         /* --- Hero Section --- */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+            height: 100vh;
+            background: linear-gradient(rgba(30, 41, 59, 0.75), rgba(30, 41, 59, 0.85)), 
                         url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             color: var(--white);
-            padding-top: 85px;
+            text-align: center;
+            padding-top: 80px;
         }
 
         .hero-content {
             max-width: 850px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .hero-badge {
-            background-color: rgba(212, 175, 55, 0.2);
-            border: 1px solid var(--secondary-color);
-            color: var(--secondary-color);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 700;
             display: inline-block;
-            margin-bottom: 25px;
+            background-color: rgba(245, 158, 11, 0.2);
+            color: var(--accent-color);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid var(--accent-color);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: #E0E0E0;
+            font-size: 1.2rem;
             margin-bottom: 35px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #e2e8f0;
+            font-weight: 300;
         }
 
         .hero-btns {
@@ -255,158 +253,140 @@
             justify-content: center;
         }
 
-        /* --- Stats Counter Section --- */
-        .stats-section {
+        /* --- Stats Section --- */
+        .stats {
             background-color: var(--white);
             margin-top: -60px;
             position: relative;
             z-index: 10;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 40px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            padding: 30px;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            gap: 20px;
             text-align: center;
         }
 
         .stat-item h3 {
-            font-size: 2.8rem;
-            font-weight: 800;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 5px;
+            font-weight: 800;
         }
 
         .stat-item p {
-            font-size: 1.05rem;
-            color: var(--gray-color);
+            color: var(--text-muted);
             font-weight: 600;
         }
 
         /* --- About Section --- */
-        .about {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .about-content {
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
 
-        .about-img {
+        .about-image {
             position: relative;
         }
 
-        .about-img img {
+        .about-image img {
             width: 100%;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
             object-fit: cover;
-            height: 450px;
         }
 
-        .about-img-badge {
+        .about-experience {
             position: absolute;
             bottom: -20px;
             right: -20px;
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            padding: 25px;
-            border-radius: var(--radius);
-            font-weight: 800;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-md);
         }
 
-        .about-img-badge span {
-            display: block;
+        .about-experience .number {
             font-size: 2rem;
+            font-weight: 800;
+            display: block;
             line-height: 1;
         }
 
-        .about-text h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
             margin-bottom: 20px;
-            color: var(--dark-color);
         }
 
-        .about-text p {
-            color: var(--gray-color);
+        .about-content p {
+            color: var(--text-muted);
             margin-bottom: 20px;
-            font-size: 1.05rem;
         }
 
-        .features-list {
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin-top: 25px;
         }
 
-        .features-list li {
+        .feature-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            font-size: 1.05rem;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--secondary-color);
         }
 
-        .features-list li i {
+        .feature-item i {
             color: var(--primary-color);
-            background-color: rgba(200, 16, 46, 0.1);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
         }
 
         /* --- Services Section --- */
         .services {
-            padding: 100px 0;
-            background-color: var(--gray-light);
+            background-color: #f1f5f9;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .service-card {
-            background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            background-color: var(--bg-card);
+            padding: 35px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
-            border-bottom: 4px solid transparent;
-            position: relative;
-            top: 0;
+            border-bottom: 3px solid transparent;
         }
 
         .service-card:hover {
-            top: -10px;
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
             border-bottom-color: var(--primary-color);
         }
 
         .service-icon {
             width: 70px;
             height: 70px;
-            background-color: rgba(200, 16, 46, 0.08);
+            background-color: rgba(194, 65, 12, 0.1);
             color: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             transition: var(--transition);
         }
 
@@ -416,110 +396,109 @@
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
         }
 
         .service-card p {
-            color: var(--gray-color);
-            font-size: 0.98rem;
-        }
-
-        /* --- Menu / Solutions Section --- */
-        .solutions {
-            padding: 100px 0;
-        }
-
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .solution-item {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 380px;
-        }
-
-        .solution-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .solution-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .solution-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .solution-overlay h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        .solution-overlay p {
+            color: var(--text-muted);
             font-size: 0.95rem;
-            color: #DDD;
+        }
+
+        /* --- Menu / Catering Showcase Section --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .menu-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-info h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .menu-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
             margin-bottom: 15px;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+        }
+
+        .menu-tag {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.9rem;
         }
 
         /* --- Testimonials Section --- */
         .testimonials {
-            padding: 100px 0;
-            background-color: var(--gray-light);
+            background-color: var(--secondary-color);
+            color: var(--white);
         }
 
-        .testimonials-grid {
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials .section-subtitle {
+            color: #94a3b8;
+        }
+
+        .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .testimonial-card {
-            background-color: var(--white);
+            background-color: rgba(255, 255, 255, 0.05);
             padding: 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .testimonial-card .quote-icon {
-            font-size: 2.5rem;
-            color: rgba(200, 16, 46, 0.15);
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .stars {
-            color: var(--secondary-color);
+            color: var(--accent-color);
             margin-bottom: 15px;
-            font-size: 0.9rem;
         }
 
         .testimonial-card p {
-            color: var(--gray-color);
+            color: #cbd5e1;
             font-style: italic;
             margin-bottom: 20px;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
         }
 
         .client-info {
@@ -532,79 +511,60 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #DDD;
             object-fit: cover;
         }
 
-        .client-details h4 {
+        .client-details h5 {
             font-size: 1rem;
-            font-weight: 700;
+            color: var(--white);
         }
 
         .client-details span {
             font-size: 0.85rem;
-            color: var(--gray-color);
+            color: #94a3b8;
         }
 
         /* --- Contact Section --- */
-        .contact {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .contact-box {
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.5fr;
             gap: 40px;
-            background-color: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            border: 1px solid var(--gray-light);
         }
 
         .contact-info {
-            background-color: var(--dark-color);
+            background-color: var(--secondary-color);
             color: var(--white);
-            padding: 50px 40px;
+            padding: 40px;
+            border-radius: var(--border-radius);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .contact-info h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        .contact-info p {
-            color: #CCC;
-            margin-bottom: 30px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
         }
 
         .info-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 15px;
             margin-bottom: 25px;
         }
 
         .info-item i {
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-top: 5px;
         }
 
         .contact-form {
-            padding: 50px 40px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
         }
 
         .form-group {
@@ -615,127 +575,106 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            font-size: 0.95rem;
+            color: var(--secondary-color);
         }
 
         .form-control {
             width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #DDD;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            font-size: 0.95rem;
-            transition: var(--transition);
+            font-size: 1rem;
             outline: none;
+            transition: var(--transition);
         }
 
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+            box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.1);
         }
 
         textarea.form-control {
-            resize: none;
+            resize: vertical;
             height: 120px;
         }
 
         /* --- Footer --- */
-        footer {
-            background-color: #111;
-            color: var(--white);
-            padding: 70px 0 20px;
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 60px 0 20px;
+            border-top: 1px solid #1e293b;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
-        .footer-about p {
-            color: #999;
-            margin-top: 15px;
+        .footer-about .logo {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .social-links a {
-            width: 38px;
-            height: 38px;
-            background-color: rgba(255, 255, 255, 0.1);
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #1e293b;
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
             transition: var(--transition);
         }
 
-        .social-links a:hover {
+        .social-btn:hover {
             background-color: var(--primary-color);
             transform: translateY(-3px);
         }
 
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--white);
-            position: relative;
-            padding-bottom: 8px;
-        }
-
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 30px;
-            height: 2px;
-            background-color: var(--secondary-color);
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #999;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--white);
-            padding-right: 5px;
-        }
-
         .footer-bottom {
             text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #777;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
             font-size: 0.9rem;
         }
 
         /* --- Responsive Styles --- */
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
-            .about-content {
+            .about-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .about-img img {
-                height: 350px;
-            }
-            .contact-box {
-                grid-template-columns: 1fr;
+            .about-image {
+                margin-bottom: 30px;
             }
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
@@ -743,41 +682,31 @@
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 70px;
-            }
-            .menu-toggle {
+            .menu-btn {
                 display: block;
             }
-            .nav-links {
+            .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 right: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 80px);
                 background-color: var(--white);
                 flex-direction: column;
                 justify-content: center;
-                gap: 25px;
                 transition: var(--transition);
-                box-shadow: var(--shadow);
             }
-            .nav-links.active {
+            .nav-menu.active {
                 right: 0;
             }
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             .hero p {
                 font-size: 1rem;
             }
             .hero-btns {
                 flex-direction: column;
-            }
-            .about-img-badge {
-                right: 10px;
-                bottom: 10px;
-                padding: 15px;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -788,183 +717,212 @@
 <body>
 
     <!-- Header Section -->
-    <header>
-        <div class="container navbar">
+    <header class="header">
+        <div class="container">
             <a href="#" class="logo">
                 <i class="fa-solid fa-utensils"></i>
-                <span>النخبة للضيافة</span>
+                مؤسسة أطياب
             </a>
-            
-            <div class="menu-toggle" id="mobile-menu">
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#about" class="nav-link">من نحن</a></li>
+                <li><a href="#services" class="nav-link">خدماتنا</a></li>
+                <li><a href="#menu" class="nav-link">قائمتنا</a></li>
+                <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+            </ul>
+            <div class="menu-btn" id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </div>
-
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#solutions">حلول الضيافة</a></li>
-                <li><a href="#testimonials">آراء العملاء</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
-            </ul>
-
-            <a href="#contact" class="btn btn-primary d-none-mobile">طلب خدمة</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container hero-content">
-            <span class="hero-badge"><i class="fa-solid fa-star"></i> الجودة والتميّز في خدمات الإعاشة والتموين</span>
-            <h1>ارتقِ ببيئة عملك وفعالياتك مع أفضل خدمات المطاعم والإعاشة</h1>
-            <p>نقدم حلول طعام متكاملة ومصممة خصيصاً للشركات، المؤسسات، والفعاليات الكبرى بأعلى معايير الجودة والسلامة الغذائية العالمية.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">احصل على عرض سعر</a>
-                <a href="#services" class="btn btn-secondary">استكشف خدماتنا</a>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">الجودة والإتقان في عالم الضيافة</span>
+                <h1>نبتكر أشهى المأكولات ونقدم أعلى معايير الضيافة والتموين</h1>
+                <p>مؤسسة متخصصة في إدارة وتشغيل المطاعم، تقديم خدمات الإعاشة والتموين المفتوح للمؤسسات، الشركات، والمناسبات الكبرى بأعلى معايير السلامة والاحترافية.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">اطلب خدمتك الآن</a>
+                    <a href="#services" class="btn btn-secondary">استكشف خدماتنا</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Container for Stats -->
+    <!-- Stats Section -->
     <div class="container">
-        <div class="stats-section">
+        <div class="stats">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>+15</h3>
+                    <h3>+12</h3>
                     <p>عاماً من الخبرة</p>
                 </div>
                 <div class="stat-item">
+                    <h3>+150</h3>
+                    <p>مشروعاً وفعالية</p>
+                </div>
+                <div class="stat-item">
                     <h3>+500K</h3>
-                    <p>وجبة تقدم سنوياً</p>
+                    <p>وجبة مقدمة سنوياً</p>
                 </div>
                 <div class="stat-item">
-                    <h3>+120</h3>
-                    <p>مؤسسة وطنية تظق بنا</p>
-                </div>
-                <div class="stat-item">
-                    <h3>99%</h3>
-                    <p>نسبة رضا العملاء</p>
+                    <h3>100%</h3>
+                    <p>رضا العملاء</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="section-padding" id="about">
         <div class="container">
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="طهاة خبراة في مؤسستنا">
-                    <div class="about-img-badge">
-                        <span>100%</span>
-                        جودة ومعايير عالمية
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="شيف محترف">
+                    <div class="about-experience">
+                        <span class="number">12+</span>
+                        <span>سنوات تميز</span>
                     </div>
                 </div>
-                <div class="about-text">
-                    <div class="section-header" style="text-align: right;">
-                        <span class="subtitle">من نحن</span>
-                        <h2 class="title" style="margin-right: 0;">الرائدون في مجالات التموين والإطعام السريع</h2>
+                <div class="about-content">
+                    <h2>نصنع تجارب طعام لا تُنسى بأيدي خادمة وخبراء في الضيافة</h2>
+                    <p>تأسست مؤسسة أطياب لتكون الرائدة في مجال الخدمات الغذائية والتموين، حيث نجمع بين الأصالة والعصرية في تقديم الوجبات. نحن نلتزم باستخدام أفضل المكونات الطازجة وأعلى معايير جودة سلامة الغذاء (HACCP) لضمان تقديم تجربة فريدة لك ولضيوفك.</p>
+                    <p>سواء كنت تبحث عن إدارة كاملة لمطعمك، أو تموين احترافي لشركتك أو مناسبتك الخاصة، فإن فريقنا المكون من طهاة عالميين وإداريين محترفين جاهز لخدمتك.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>مكونات طازجة 100%</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>معايير صحية عالمية</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>طهاة ذوو خبرة واسعة</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>التزام تام بالمواعيد</span>
+                        </div>
                     </div>
-                    <p>مؤسسة النخبة لخدمات المطاعم والتموين هي مؤسسة سعودية متخصصة في تقديم أحدث الحلول الغذائية وإدارة المطابخ للشركات والمستشفيات والقطاعات الحيوية.</p>
-                    <p>نحن نؤمن بأن الطعام الخاطف للأنفاس والخدمة المتميزة هما أساس نجاح أي بيئة عمل أو مناسبة. لذا نستخدم أحدث التقنيات وأجود المكونات الطازجة مع فريق شغوف ومحترف.</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> مطابخ مركزية مجهزة بأحدث التقنيات.</li>
-                        <li><i class="fa-solid fa-check"></i> طهاة عالميون ومستشارو تغذية متخصصون.</li>
-                        <li><i class="fa-solid fa-check"></i> التزام تام بمعايير الـ HACCP والسلامة الغذائية.</li>
-                        <li><i class="fa-solid fa-check"></i> أسطول نقل مبرد ومجهز للوصول في الوقت المحدد.</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="section-padding services" id="services">
         <div class="container">
-            <div class="section-header">
-                <span class="subtitle">خدماتنا المتميزة</span>
-                <h2 class="title">حلول غذائية شاملة تلبي احتياجاتك</h2>
+            <div class="text-center">
+                <h2 class="section-title">خدماتنا المتميزة</h2>
+                <p class="section-subtitle">نقدم مجموعة متكاملة من الحلول الغذائية المصممة لتلبي جميع احتياجاتكم</p>
             </div>
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fa-solid fa-building-user"></i>
+                        <i class="fa-solid fa-concierge-bell"></i>
                     </div>
-                    <h3>تموين الشركات والمؤسسات</h3>
-                    <p>توفير وجبات يومية متوازنة وصحية لموظفي الشركات والمصانع بأساليب تقديم حديثة ومتنوعة تناسب جميع الأذواق.</p>
+                    <h3>تموين الحفلات والمناسبات</h3>
+                    <p>نقدم خدمات البوفيه المفتوح والتموين الخارجي للمؤتمرات، الأعراس، والفعاليات الخاصة بأعلى مستويات الفخامة.</p>
                 </div>
                 <!-- Service 2 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fa-solid fa-champagne-glasses"></i>
+                        <i class="fa-solid fa-building"></i>
                     </div>
-                    <h3>تنظيم وحفلات الفعاليات</h3>
-                    <p>خدمات ضيافة فاخرة ومتكاملة للمؤتمرات، المعارض، والاحتفالات الرسمية بوفيهات مفتوحة وخدمة "فينجر فود" راقية.</p>
+                    <h3>إعاشة الشركات والمؤسسات</h3>
+                    <p>حلول وجبات يومية متوازنة وصحية لموظفي الشركات والمصانع والمواقع الميدانية والتجمعات السكنية.</p>
                 </div>
                 <!-- Service 3 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fa-solid fa-kitchen-set"></i>
+                        <i class="fa-solid fa-dumpster-fire"></i>
                     </div>
-                    <h3>إدارة وتشغيل المطابخ</h3>
-                    <p>تشغيل وإدارة المطاعم والمطابخ الداخلية للمستشفيات، المجمعات السكنية، والجامعات وفق أعلى معايير الجودة.</p>
+                    <h3>إدارة وتشغيل المطاعم</h3>
+                    <p>نُدير المطاعم والمقاهي بكفاءة عالية، من خطط التشغيل، تطوير القوائم، وحتى تدريب الكوادر والإشراف اليومي.</p>
                 </div>
                 <!-- Service 4 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fa-solid fa-truck-ramp-box"></i>
+                        <i class="fa-solid fa-truck-ram"></i>
                     </div>
-                    <h3>التموين الميداني والناائي</h3>
-                    <p>تجهيز ونقل الوجبات المجهزة مسبقاً للشركات الميدانية ومواقع الإنشاءات في المناطق البعيدة بكفاءة وأمان.</p>
+                    <h3>تجهيز المطابخ المركزية</h3>
+                    <p>تصميم وتجهيز المطابخ السحابية والمركزية بأحدث المعدات المتطورة وفق الاشتراطات الصحية الحديثة.</p>
                 </div>
                 <!-- Service 5 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fa-solid fa-utensils"></i>
+                        <i class="fa-solid fa-bread-slice"></i>
                     </div>
-                    <h3>تجهيز المطابخ السحابية</h3>
-                    <p>تقديم خدمات الدعم للعلامات التجارية والمطاعم لإنتاج وتجهيز منتجاتهم عبر المطابخ السحابية التابعة لنا.</p>
+                    <h3>تطوير القوائم والوصفات</h3>
+                    <p>ابتكار قوائم طعام فريدة ومخصصة تناسب هوية مشروعاتكم وتضمن تحقيق أعلى أرباح وأفضل تقييمات.</p>
                 </div>
                 <!-- Service 6 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fa-solid fa-wheat-awn"></i>
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h3>الاستشارات والأنظمة الغذائية</h3>
-                    <p>تخطيط قوائم طعام خاصة ومدروسة قيمتها الغذائية لتناسب المتطلبات الصحية الخاصة بكل قطاع.</p>
+                    <h3>استشارات سلامة الغذاء</h3>
+                    <p>متابعة وتطبيق أعلى معايير النظافة والجودة، وإعداد خطط الجودة والامتثال للأنظمة الصحية.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solutions / Highlights Section -->
-    <section class="solutions" id="solutions">
+    <!-- Menu / Gallery Showcase -->
+    <section class="section-padding" id="menu">
         <div class="container">
-            <div class="section-header">
-                <span class="subtitle">قطاعات نخدمها</span>
-                <h2 class="title">حلول مخصصة لكل قطاع</h2>
+            <div class="text-center">
+                <h2 class="section-title">نماذج من أطباقنا</h2>
+                <p class="section-subtitle">تذوق الفخامة والجمال في كل طبق نعده برعاية واهتمام</p>
             </div>
-            <div class="solutions-grid">
-                <div class="solution-item">
-                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="قطاع الشركات">
-                    <div class="solution-overlay">
-                        <h3>قطاع الأعمال والشركات</h3>
-                        <p>رفع إنتاجية الموظفين عبر تقديم وجبات صحية ولذيذة داخل بيئة العمل.</p>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="مشويات مشكلة" class="menu-img">
+                    <div class="menu-info">
+                        <h4>المشويات الشرقية الفاخرة</h4>
+                        <p>تشكيلة مختارة من اللحوم والدجاج المشوي على الفحم بتتبيلة أطياب الخاصة.</p>
+                        <div class="menu-footer">
+                            <span class="menu-tag">بوفيه مفتوح</span>
+                            <i class="fa-solid fa-heart" style="color: var(--primary-color);"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="solution-item">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="الفعاليات والمؤتمرات">
-                    <div class="solution-overlay">
-                        <h3>الفعاليات والمؤتمرات</h3>
-                        <p>ضيافة تشرفك أمام ضيوفك بأرقى معايير التقديم والتنسيق.</p>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="المقبلات والمقبلات المفتوحة" class="menu-img">
+                    <div class="menu-info">
+                        <h4>تشكيلة المقبلات العالمية</h4>
+                        <p>أطباق مقبلات باردة وساخنة تفتح الشهية ومصنوعة من مكونات طازجة يومياً.</p>
+                        <div class="menu-footer">
+                            <span class="menu-tag">خدمات ضيافة</span>
+                            <i class="fa-solid fa-heart" style="color: var(--primary-color);"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="solution-item">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="القطاع الصحي والتعليمي">
-                    <div class="solution-overlay">
-                        <h3>القطاع الصحي والتعليمي</h3>
-                        <p>التزام دقيق بالاشتراطات الصحية والغذائية الحازمة والمناسبة لجميع الفئات.</p>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="الأطباق البحرية" class="menu-img">
+                    <div class="menu-info">
+                        <h4>الأطباق البحرية المتميزة</h4>
+                        <p>مأكولات بحرية طازجة تُعد وفق أرقى الوصفات العالمية والمحلية.</p>
+                        <div class="menu-footer">
+                            <span class="menu-tag">وجبات خاصة</span>
+                            <i class="fa-solid fa-heart" style="color: var(--primary-color);"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="الحلويات الشرقية والغربية" class="menu-img">
+                    <div class="menu-info">
+                        <h4>ركن الحلويات المبتكرة</h4>
+                        <p>تشكيلة واسعة من الحلويات الشرقية والغربية التي تضفي لمسة ساحرة لحدثك.</p>
+                        <div class="menu-footer">
+                            <span class="menu-tag">حفلات ومناسبات</span>
+                            <i class="fa-solid fa-heart" style="color: var(--primary-color);"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -972,51 +930,61 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="section-padding testimonials">
         <div class="container">
-            <div class="section-header">
-                <span class="subtitle">شركاء النجاح</span>
-                <h2 class="title">ماذا يقول عملاؤنا عن خدماتنا</h2>
+            <div class="text-center">
+                <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+                <p class="section-subtitle">نسعد دائماً بثقة شركائنا وعملائنا الكرام في مختلف القطاعات</p>
             </div>
-            <div class="testimonials-grid">
+            <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <i class="fa-solid fa-quote-left quote-icon"></i>
                     <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <p>"تتعامل معهم شركتنا منذ أكثر من سنتين لتوفير وجبات الغداء للجميع. الالتزام بالوقت والجودة وطعم الطعام الممتاز جعلهم خيارنا الأول دائماً."</p>
+                    <p>"تعاملنا مع مؤسسة أطياب لتموين حفل الشركة السنوي، وكانت التجربة ممتازة من حيث تنوع الطعام، النظافة، والتنظيم الاحترافي. شكراً لكم!"</p>
                     <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="عميل" class="client-avatar">
                         <div class="client-details">
-                            <h4>أحمد المحمد</h4>
-                            <span>مدير الموارد البشرية - شركة التقنية</span>
+                            <h5>م. أسامة العتيبي</h5>
+                            <span>مدير العلاقات العامة - شركة المجد</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
-                    <i class="fa-solid fa-quote-left quote-icon"></i>
                     <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <p>"قمنا بتكليفهم بضيافة مؤتمرنا السنوي المكون من 800 شخص. الخدمة كانت احترافية للغاية والبوفيه كان حديث الحضور بجماله وتنوعه."</p>
+                    <p>"إدارة تشغيل المطعم الخاصة بؤسسة أطياب ساهمت بشكل كبير في رفع جودة خدماتنا وزيادة المبيعات. فريقهم يمتلك خبرة عميقة في المجال."</p>
                     <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="عميلة" class="client-avatar">
                         <div class="client-details">
-                            <h4>سارة العتيبي</h4>
-                            <span>منظمة فعاليات ومؤتمرات</span>
+                            <h5>أ. سارة السليمان</h5>
+                            <span>مالكة سلسلة مطاعم</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
-                    <i class="fa-solid fa-quote-left quote-icon"></i>
                     <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <p>"احترافية عالية في التعامل ونظافة لا غبار عليها. إدارة المطابخ لديهم تدل على خبرة عميقة بمعايير السلامة الغذائية العالمية."</p>
+                    <p>"وجبات يومية منوعة وطازجة لموظفينا بدون أي تأخير. الجودة ثابته والتعامل في غاية الرقي. أنصح بشدة بالتعامل معهم."</p>
                     <div class="client-info">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="عميل" class="client-avatar">
                         <div class="client-details">
-                            <h4>م. خالد الدوسري</h4>
-                            <span>مدير التشغيل - مجمع سكني</span>
+                            <h5>أ. خالد الشمري</h5>
+                            <span>مدير الموارد البشرية</span>
                         </div>
                     </div>
                 </div>
@@ -1025,76 +993,73 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="section-padding" id="contact">
         <div class="container">
-            <div class="contact-box">
+            <div class="text-center">
+                <h2 class="section-title">تواصل معنا</h2>
+                <p class="section-subtitle">نحن هنا لإجابة جميع استفساراتكم وتقديم أفضل العروض لمشروعاتكم</p>
+            </div>
+            <div class="contact-grid">
                 <div class="contact-info">
                     <div>
-                        <h3>تواصل معنا</h3>
-                        <p>هل لديك استفسار أو ترغب في الحصول على عرض سعر لمؤسستك؟ فريقنا جاهز لمساعدتك.</p>
+                        <h3>معلومات الاتصال</h3>
+                        <p style="color: #cbd5e1; margin-bottom: 30px;">يسعدنا زيارتكم في مقرنا أو التواصل معنا عبر وسائل الاتصال المتاحة.</p>
                         
                         <div class="info-item">
                             <i class="fa-solid fa-location-dot"></i>
                             <div>
                                 <strong>العنوان:</strong>
-                                <p style="margin:0; color:#AAA;">طريق الملك فهد، الرياض، المملكة العربية السعودية</p>
+                                <p style="color: #cbd5e1;">طريق الملك فهد، الرياض، المملكة العربية السعودية</p>
                             </div>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-phone"></i>
                             <div>
                                 <strong>الهاتف:</strong>
-                                <p style="margin:0; color:#AAA;" dir="ltr">+966 11 123 4567</p>
+                                <p style="color: #cbd5e1;">+966 11 123 4567 / +966 50 000 0000</p>
                             </div>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-envelope"></i>
                             <div>
                                 <strong>البريد الإلكتروني:</strong>
-                                <p style="margin:0; color:#AAA;">info@elitenokhba.com</p>
+                                <p style="color: #cbd5e1;">info@atyab-catering.com</p>
                             </div>
                         </div>
                     </div>
-
-                    <div style="margin-top: 30px;">
-                        <span style="display:block; margin-bottom:10px; font-weight:600;">تابعنا على الشبكات الاجتماعية:</span>
-                        <div class="social-links">
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
 
                 <div class="contact-form">
-                    <h3 style="margin-bottom: 25px; font-weight:700;">طلب عرض سعر / استفسار</h3>
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('شكراً لتواصلك معنا! سيتم الرد عليك في أقرب وقت.');">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت.');">
                         <div class="form-group">
-                            <label>الاسم الكامل</label>
-                            <input type="text" class="form-control" placeholder="أدخل اسمك الكريم" required>
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" class="form-control" placeholder="أدخل اسمك الكريم" required>
                         </div>
                         <div class="form-group">
-                            <label>اسم الشركة / الجهة</label>
-                            <input type="text" class="form-control" placeholder="اسم المؤسسة أو الشركة" required>
+                            <label for="phone">رقم الجوال</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="05xxxxxxxx" required>
                         </div>
                         <div class="form-group">
-                            <label>رقم الجوال</label>
-                            <input type="tel" class="form-control" placeholder="05xxxxxxxx" required>
-                        </div>
-                        <div class="form-group">
-                            <label>الخدمة المطلوبة</label>
-                            <select class="form-control" style="background:#fff;">
-                                <option>إعاشة وتموين شركات</option>
-                                <option>ضيافة فعاليات ومؤتمرات</option>
-                                <option>إدارة وتشغيل مطابخ</option>
-                                <option>خدمات أخرى</option>
+                            <label for="service">الخدمة المطلوبة</label>
+                            <select id="service" class="form-control">
+                                <option value="catering">تموين إعاشة وشركات</option>
+                                <option value="events">حفلات ومناسبات</option>
+                                <option value="management">إدارة وتشغيل مطعم</option>
+                                <option value="consulting">استشارات وتطوير المنيو</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>تفاصيل الطلب</label>
-                            <textarea class="form-control" placeholder="اكتب التفاصيل هنا (عدد الوجبات، الموقع، التاريخ المتوقع...)"></textarea>
+                            <label for="message">الرسالة / تفاصيل الطلب</label>
+                            <textarea id="message" class="form-control" placeholder="اكتب تفاصيل طلبك هنا..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width:100%;">إرسال الطلب الآن</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">إرسال الطلب</button>
                     </form>
                 </div>
             </div>
@@ -1102,59 +1067,56 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <div class="logo" style="color:var(--white);">
-                        <i class="fa-solid fa-utensils" style="color:var(--secondary-color);"></i>
-                        <span>النخبة للضيافة</span>
-                    </div>
-                    <p>المؤسسة الرائدة في تقديم الخدمات الغذائية والتموين والإعاشة على مستوى المملكة بأساليب مبتكرة ومعايير عالمية.</p>
+                    <a href="#" class="logo">
+                        <i class="fa-solid fa-utensils"></i>
+                        مؤسسة أطياب
+                    </a>
+                    <p>مؤسسة متخصصة في تقديم خدمات التموين، والإعاشة، وإدارة المطاعم بأساليب مبتكرة ومعايير عالمية تضمن تقديم الأفضل دائماً.</p>
                 </div>
-
                 <div>
                     <h4 class="footer-title">روابط سريعة</h4>
                     <ul class="footer-links">
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#about">من نحن</a></li>
                         <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#solutions">حلول الضيافة</a></li>
+                        <li><a href="#menu">قائمتنا</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <h4 class="footer-title">خدماتنا</h4>
                     <ul class="footer-links">
-                        <li><a href="#">تموين الشركات</a></li>
-                        <li><a href="#">ضيافة المؤتمرات</a></li>
-                        <li><a href="#">إدارة المطابخ</a></li>
-                        <li><a href="#">الإعاشة الميدانية</a></li>
+                        <li><a href="#services">تموين الشركات</a></li>
+                        <li><a href="#services">إدارة المطاعم</a></li>
+                        <li><a href="#services">تجهيز البوفيهات</a></li>
+                        <li><a href="#services">استشارات الغذاء</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <h4 class="footer-title">ساعات العمل</h4>
-                    <p style="color:#999; font-size:0.95rem; margin-bottom:10px;">الأحد - الخميس: 8:00 صباحاً - 6:00 مساءً</p>
-                    <p style="color:#999; font-size:0.95rem;">الجمعة - السبت: مغلق (فريق الطوارئ والفعاليات يعمل 24/7)</p>
+                    <p>الأحد - الخميس: 8:00 صباحاً - 10:00 مساءً</p>
+                    <p>الجمعة - السبت: 1:00 ظهراً - 11:00 مساءً</p>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>جميع الحقوق محفوظة &copy; 2023 مؤسسة النخبة لخدمات المطاعم والتموين.</p>
+                <p>جميع الحقوق محفوظة &copy; 2023 - مؤسسة أطياب للخدمات الغذائية</p>
             </div>
         </div>
     </footer>
 
-    <!-- Minimal Javascript for Mobile Navigation Menu Toggle -->
+    <!-- Interactive JavaScript -->
     <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenu.querySelector('i');
-            if(navLinks.classList.contains('active')) {
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
             } else {
@@ -1163,16 +1125,23 @@
             }
         });
 
-        // Close navbar menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        // Close Mobile Menu when clicking link
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = mobileMenu.querySelector('i');
-                if(icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
+                navMenu.classList.remove('active');
+                menuBtn.querySelector('i').classList.remove('fa-xmark');
+                menuBtn.querySelector('i').classList.add('fa-bars');
             });
+        });
+
+        // Sticky Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'var(--shadow-sm)';
+            }
         });
     </script>
 </body>
