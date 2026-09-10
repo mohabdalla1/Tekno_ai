@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز مطعم الحديث | Modern Restaurant Center</title>
-    <!-- Google Fonts -->
+    <title>مركز المطعم الحديث | تجربة طعام استثنائية</title>
+    <!-- Google Fonts - Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -12,40 +12,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ==========================================
-           CSS Variables & Root Settings
-           ========================================== */
         :root {
-            --primary-color: #c5a880;
-            --primary-hover: #e0c39a;
-            --bg-dark: #0f1416;
-            --bg-card: #182023;
-            --bg-light: #222b2e;
-            --text-gold: #e5c158;
-            --text-light: #f5f6f8;
-            --text-muted: #a0aab0;
-            --danger: #e74c3c;
-            --transition: all 0.3s ease-in-out;
-            --radius: 12px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --primary-color: #c9933b;
+            --primary-hover: #b07d2b;
+            --secondary-color: #1a2229;
+            --dark-bg: #0f1418;
+            --card-bg: #182026;
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
         }
 
-        /* ==========================================
-           Reset & Base Styles
-           ========================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Tajawal', sans-serif;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--dark-bg);
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
@@ -61,12 +49,6 @@
             list-style: none;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
         .container {
             width: 90%;
             max-width: 1200px;
@@ -74,115 +56,92 @@
             padding: 0 15px;
         }
 
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        /* ==========================================
-           Typography & Utility Classes
-           ========================================== */
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-subtitle {
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
         .btn {
             display: inline-block;
-            padding: 12px 32px;
+            padding: 12px 30px;
             border-radius: 50px;
-            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            border: 2px solid transparent;
+            border: none;
             transition: var(--transition);
-            text-align: center;
+            font-size: 1rem;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
-            color: var(--bg-dark);
+            color: var(--white);
         }
 
         .btn-primary:hover {
             background-color: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(197, 168, 128, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 147, 59, 0.4);
         }
 
         .btn-outline {
-            border-color: var(--primary-color);
+            background-color: transparent;
             color: var(--primary-color);
-            background: transparent;
+            border: 2px solid var(--primary-color);
         }
 
         .btn-outline:hover {
             background-color: var(--primary-color);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
-        /* ==========================================
-           Header & Navigation
-           ========================================== */
-        header {
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -8px;
+            right: 25%;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Navbar */
+        .navbar {
             position: fixed;
             top: 0;
             right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(15, 20, 22, 0.95);
+            background-color: rgba(15, 20, 24, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0;
             transition: var(--transition);
         }
 
-        header.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
-        }
-
-        .navbar {
+        .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--text-light);
+            color: var(--white);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -192,97 +151,55 @@
             color: var(--primary-color);
         }
 
-        .logo span {
-            color: var(--primary-color);
-        }
-
         .nav-links {
             display: flex;
-            align-items: center;
             gap: 30px;
+            align-items: center;
         }
 
         .nav-links a {
             font-weight: 500;
             font-size: 1.05rem;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary-color);
         }
 
-        .menu-toggle {
+        .hamburger {
             display: none;
-            font-size: 1.5rem;
-            color: var(--text-light);
             cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white);
         }
 
-        /* ==========================================
-           Hero Section
-           ========================================== */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(15, 20, 22, 0.75), rgba(15, 20, 22, 0.85)), 
-                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(15, 20, 24, 0.75), rgba(15, 20, 24, 0.85)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
-            padding-top: 80px;
             text-align: center;
-            position: relative;
+            padding-top: 80px;
         }
 
-        .hero-content {
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(197, 168, 128, 0.15);
-            color: var(--primary-color);
-            padding: 8px 20px;
-            border-radius: 30px;
-            border: 1px solid var(--primary-color);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .hero-title {
-            font-size: 3.8rem;
+        .hero-content h1 {
+            font-size: 3.5rem;
             font-weight: 800;
-            line-height: 1.2;
             margin-bottom: 20px;
-            color: var(--text-light);
+            line-height: 1.2;
         }
 
-        .hero-title span {
+        .hero-content h1 span {
             color: var(--primary-color);
         }
 
-        .hero-description {
+        .hero-content p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            margin-bottom: 35px;
-            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 35px;
         }
 
         .hero-buttons {
@@ -291,11 +208,10 @@
             justify-content: center;
         }
 
-        /* ==========================================
-           Features Section
-           ========================================== */
+        /* Features Section */
         .features {
-            background-color: var(--bg-card);
+            padding: 100px 0;
+            background-color: var(--secondary-color);
         }
 
         .features-grid {
@@ -305,9 +221,9 @@
         }
 
         .feature-card {
-            background-color: var(--bg-light);
+            background-color: var(--card-bg);
             padding: 40px 25px;
-            border-radius: var(--radius);
+            border-radius: 15px;
             text-align: center;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -316,42 +232,29 @@
         .feature-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-color);
-            box-shadow: var(--shadow);
         }
 
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(197, 168, 128, 0.1);
+        .feature-card i {
+            font-size: 2.5rem;
             color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 20px;
-            transition: var(--transition);
+            margin-bottom: 20px;
         }
 
-        .feature-card:hover .feature-icon {
-            background: var(--primary-color);
-            color: var(--bg-dark);
-        }
-
-        .feature-title {
+        .feature-card h3 {
             font-size: 1.3rem;
-            margin-bottom: 12px;
-            font-weight: 700;
+            margin-bottom: 15px;
         }
 
-        .feature-desc {
+        .feature-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        /* ==========================================
-           Menu Section
-           ========================================== */
+        /* Menu Section */
+        .menu {
+            padding: 100px 0;
+        }
+
         .menu-tabs {
             display: flex;
             justify-content: center;
@@ -362,19 +265,19 @@
 
         .tab-btn {
             padding: 10px 25px;
-            background: var(--bg-card);
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-light);
-            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 30px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
         }
 
         .tab-btn.active, .tab-btn:hover {
             background-color: var(--primary-color);
-            color: var(--bg-dark);
+            color: var(--white);
+            border-color: var(--primary-color);
         }
 
         .menu-grid {
@@ -384,236 +287,117 @@
         }
 
         .menu-item {
-            background-color: var(--bg-card);
-            border-radius: var(--radius);
+            background-color: var(--card-bg);
+            border-radius: 15px;
             overflow: hidden;
-            transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            flex-direction: column;
+            transition: var(--transition);
         }
 
         .menu-item:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .menu-img {
             height: 220px;
             width: 100%;
             object-fit: cover;
-            transition: var(--transition);
         }
 
-        .menu-item:hover .menu-img {
-            transform: scale(1.05);
-        }
-
-        .menu-img-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .menu-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--primary-color);
-            color: var(--bg-dark);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .menu-content {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+        .menu-info {
+            padding: 20px;
         }
 
         .menu-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .menu-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
         }
 
         .menu-price {
             color: var(--primary-color);
-            font-size: 1.3rem;
             font-weight: 800;
+            font-size: 1.2rem;
         }
 
         .menu-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .menu-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 15px;
-        }
-
-        .rating {
-            color: var(--text-gold);
             font-size: 0.9rem;
+            margin-bottom: 15px;
         }
 
-        .order-btn {
-            color: var(--primary-color);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .order-btn:hover {
-            color: var(--primary-hover);
-        }
-
-        /* ==========================================
-           About Section
-           ========================================== */
+        /* About Section */
         .about {
-            background-color: var(--bg-card);
+            padding: 100px 0;
+            background-color: var(--secondary-color);
         }
 
-        .about-wrapper {
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
 
-        .about-images {
-            position: relative;
+        .about-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
-        .about-img-1 {
-            width: 80%;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--white);
         }
 
-        .about-img-2 {
-            width: 60%;
-            border-radius: var(--radius);
-            position: absolute;
-            bottom: -30px;
-            left: 0;
-            border: 6px solid var(--bg-card);
-            box-shadow: var(--shadow);
-        }
-
-        .experience-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--primary-color);
-            color: var(--bg-dark);
-            padding: 20px;
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: 800;
-            line-height: 1;
-            box-shadow: var(--shadow);
-        }
-
-        .experience-badge span {
-            font-size: 1.8rem;
-            display: block;
-        }
-
-        .about-text .section-title {
-            text-align: right;
-            margin-bottom: 25px;
-        }
-
-        .about-text .section-title::after {
-            right: 0;
-            transform: none;
-        }
-
-        .about-p {
+        .about-text p {
             color: var(--text-muted);
             margin-bottom: 20px;
             font-size: 1.05rem;
         }
 
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .about-feature-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-        }
-
-        .about-feature-item i {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-
-        /* ==========================================
-           Reservation Section
-           ========================================== */
-        .reservation-wrapper {
-            background: linear-gradient(rgba(24, 32, 35, 0.9), rgba(24, 32, 35, 0.9)), 
-                        url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80') center/cover;
-            border-radius: var(--radius);
-            padding: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Reservation Section */
+        .reservation {
+            padding: 100px 0;
+            background: linear-gradient(rgba(15, 20, 24, 0.9), rgba(15, 20, 24, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
         }
 
         .reservation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group label {
-            font-weight: 500;
-            color: var(--text-light);
-            font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
         .form-control {
             width: 100%;
-            padding: 14px 18px;
-            background: var(--bg-dark);
+            padding: 15px;
+            background-color: var(--secondary-color);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            color: var(--text-light);
+            color: var(--white);
             font-size: 1rem;
             outline: none;
             transition: var(--transition);
@@ -623,78 +407,10 @@
             border-color: var(--primary-color);
         }
 
-        .form-group-full {
-            grid-column: 1 / -1;
-        }
-
-        .submit-btn-wrap {
-            grid-column: 1 / -1;
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        /* ==========================================
-           Testimonials Section
-           ========================================== */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 2.5rem;
-            color: rgba(197, 168, 128, 0.2);
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        .testimonial-text {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .user-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .user-name {
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
-        .user-role {
-            color: var(--primary-color);
-            font-size: 0.85rem;
-        }
-
-        /* ==========================================
-           Footer Section
-           ========================================== */
+        /* Footer */
         footer {
-            background-color: #090c0e;
-            padding-top: 80px;
+            background-color: #080b0e;
+            padding: 60px 0 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -702,128 +418,74 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
-        .footer-about p {
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col li {
             color: var(--text-muted);
-            margin: 20px 0;
+            margin-bottom: 10px;
             font-size: 0.95rem;
         }
 
         .social-links {
             display: flex;
             gap: 15px;
+            margin-top: 15px;
         }
 
-        .social-btn {
+        .social-links a {
             width: 40px;
             height: 40px;
-            background: var(--bg-card);
-            color: var(--text-light);
-            border-radius: 50%;
+            background-color: var(--card-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
+            border-radius: 50%;
+            color: var(--white);
         }
 
-        .social-btn:hover {
+        .social-links a:hover {
             background-color: var(--primary-color);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-            padding-right: 5px;
-        }
-
-        .contact-info li {
-            display: flex;
-            gap: 15px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            align-items: flex-start;
-        }
-
-        .contact-info i {
-            color: var(--primary-color);
-            margin-top: 5px;
         }
 
         .copyright {
-            background-color: #050708;
-            padding: 25px 0;
             text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        /* ==========================================
-           Responsive Design / Media Queries
-           ========================================== */
+        /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .about-wrapper {
+            .about-content {
                 grid-template-columns: 1fr;
             }
-
-            .about-images {
-                margin-bottom: 40px;
-            }
-
-            .reservation-wrapper {
-                padding: 30px;
+            .hero-content h1 {
+                font-size: 2.8rem;
             }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle {
+            .hamburger {
                 display: block;
             }
 
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 70px;
                 right: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--bg-dark);
+                height: calc(100vh - 70px);
+                background-color: var(--dark-bg);
                 flex-direction: column;
                 justify-content: center;
-                gap: 30px;
                 transition: var(--transition);
             }
 
@@ -831,25 +493,16 @@
                 right: 0;
             }
 
-            .hero-title {
-                font-size: 2.2rem;
+            .form-group-row {
+                grid-template-columns: 1fr;
             }
 
-            .hero-description {
-                font-size: 1rem;
+            .hero-content h1 {
+                font-size: 2.2rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
-                gap: 15px;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
             }
         }
     </style>
@@ -857,140 +510,94 @@
 <body>
 
     <!-- Header / Navigation -->
-    <header id="header">
-        <div class="container navbar">
+    <nav class="navbar">
+        <div class="container">
             <a href="#" class="logo">
-                <i class="fa-solid fa-utensils"></i>
-                 مركز <span>مطعم الحديث</span>
+                <i class="fa-solid font-awesome-logo-full"></i>
+                <i class="fa-solid fa-utensils"></i> مركز المطعم الحديث
             </a>
-            
-            <div class="menu-toggle" id="mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">الرئيسية</a></li>
                 <li><a href="#about">من نحن</a></li>
                 <li><a href="#menu">قائمة الطعام</a></li>
                 <li><a href="#features">مميزاتنا</a></li>
-                <li><a href="#reservation">الحجز</a></li>
-                <li><a href="#contact">التواصل</a></li>
+                <li><a href="#reservation">حجز طاولة</a></li>
             </ul>
-
-            <a href="#reservation" class="btn btn-primary nav-btn d-none-mobile">احجز طاولتك</a>
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <span class="hero-badge"><i class="fa-solid fa-star"></i> التجربة الأرقى للمأكولات الفاخرة</span>
-            <h1 class="hero-title">تذوق الفن في <span>كل طبق</span> نقدمه لك</h1>
-            <p class="hero-description">نجمع بين أصالة النكهات الشرقية واللمسات العصريّة العالمية لنقدم لك تجربة استثنائية لا تُنسى في عالم الطهي.</p>
+            <h1>تجربة طهي تجمع بين <span>الأصالة والابتكار</span></h1>
+            <p>أهلاً بكم في مركز المطعم الحديث، حيث نلتقي بشغف الطهي ونقدم لكم أشهى الأطباق العالمية والمحلية المُعدة بأيدي أفضل الطهاة في أجواء عصرية ساحرة.</p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> استكشف القائمة</a>
-                <a href="#reservation" class="btn btn-outline"><i class="fa-solid fa-calendar-check"></i> حجز طاولة</a>
+                <a href="#menu" class="btn btn-primary">استكشف القائمة</a>
+                <a href="#reservation" class="btn btn-outline">حجز طاولة</a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features section-padding" id="features">
+    <section class="features" id="features">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">لماذا تختارنا</span>
-                <h2 class="section-title">تجربة تناول طعام فريدة</h2>
+            <div class="section-title">
+                <h2>لماذا تختارنا؟</h2>
+                <p>نحرص دائماً على تقديم أفضل تجربة طعام تليق بجميع زوارنا</p>
             </div>
-            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-carrot"></i>
-                    </div>
-                    <h3 class="feature-title">مكونات طازجة 100%</h3>
-                    <p class="feature-desc">نختار مكوناتنا بعناية فائقة يومياً من أفضل المزارع المحلية لضمان أعلى جودة ونكهة.</p>
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3>مكونات طازجة</h3>
+                    <p>نعتمد على أفضل المكونات الطازجة يومياً لضمان أعلى جودة ونكهة لا تُنسى.</p>
                 </div>
-
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-user-chef"></i>
-                    </div>
-                    <h3 class="feature-title">طهاة عالميون</h3>
-                    <p class="feature-desc">فريق محترف من الطهاة ذوي الخبرة العالمية يبتكرون أجود الوصفات وأرقى الأطباق.</p>
+                    <i class="fa-solid fa-user-ninja"></i>
+                    <h3>طهاة محترفون</h3>
+                    <p>فريقنا يضم نخبة من أشهر الطهاة ذوي الخبرة العالية في ابتكار أشهى الأطباق.</p>
                 </div>
-
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-wine-glass"></i>
-                    </div>
-                    <h3 class="feature-title">أجواء راقية</h3>
-                    <p class="feature-desc">تصميم داخلي عصري ومريح يناسب جميع المناسبات واللقاءات العائلية والأعمال.</p>
+                    <i class="fa-solid fa-wine-glass"></i>
+                    <h3>أجواء عصرية</h3>
+                    <p>تصميم داخلي راقٍ وإضاءة مريحة تضمن لك تجربة تناول طعام فريدة مع عائلتك.</p>
                 </div>
-
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <h3 class="feature-title">خدمة توصيل سريعة</h3>
-                    <p class="feature-desc">نوصل لك أطباقك المفضلة ساخنة وطازجة وفي أسرع وقت ممكن حتى باب منزلك.</p>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h3>خدمة سريعة</h3>
+                    <p>نهتم بتقديم أطباقكم بأعلى درجات السرعة والكفاءة دون التنازل عن الجودة.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about section-padding" id="about">
+    <section class="about" id="about">
         <div class="container">
-            <div class="about-wrapper">
-                <div class="about-images">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="المطعم من الداخل" class="about-img-1">
-                    <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=600&q=80" alt="طباخ يحضر الطعام" class="about-img-2">
-                    <div class="experience-badge">
-                        <span>15+</span>
-                        عاماً من الخبـرة
-                    </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عن مركز المطعم الحديث">
                 </div>
-
                 <div class="about-text">
-                    <span class="section-subtitle">قصتنا</span>
-                    <h2 class="section-title">شغف بالطهي ورؤية معاصرة</h2>
-                    <p class="about-p">تأسس "مركز مطعم الحديث" ليكون وجهة عشاق الطعام الراقي. نحن لا نقدم وجبات فحسب، بل نصنع تجارب حسية فريدة تمزج بين المذاق الرائع والعرض الفني المبتكر.</p>
-                    <p class="about-p">نسعى دائماً لتطوير أطباقنا مع الحفاظ على الهوية الأصيلة، لنضمن لك ولاسرتك أوقاتاً ممتعة وذكريات لا تُنسى مع كل زيارة.</p>
-                    
-                    <div class="about-features">
-                        <div class="about-feature-item">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>معايير نظافة وجودة عالمية</span>
-                        </div>
-                        <div class="about-feature-item">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>قائمة طعام متنوعة وشاملة</span>
-                        </div>
-                        <div class="about-feature-item">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>أماكن خاصة للعائلات والفعاليات</span>
-                        </div>
-                        <div class="about-feature-item">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>خدمة ضيافة ممتازة وسريعة</span>
-                        </div>
-                    </div>
-
-                    <a href="#reservation" class="btn btn-primary">اكتشف المزيد عنا</a>
+                    <h2>قصة مركز المطعم الحديث</h2>
+                    <p>تأسس مركز المطعم الحديث ليكون وجهتك الأولى لعشاق المذاق الرفيع. نحن لا نقدم الطعام فحسب، بل نخلق ذكريات فريدة عبر كل طبق يُقدم على طاولتك.</p>
+                    <p>تدمج أطباقنا بين أسرار الوصفات التقليدية ولمسات المطبخ العصري، مع الالتزام التام بأعلى معايير النظافة والجودة في كل تفصيلة.</p>
+                    <a href="#reservation" class="btn btn-primary" style="margin-top: 15px;">احجز طاولتك الآن</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Menu Section -->
-    <section class="menu section-padding" id="menu">
+    <section class="menu" id="menu">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">قائمة الطعام</span>
-                <h2 class="section-title">أشهر أطباقنا المختارة</h2>
+            <div class="section-title">
+                <h2>قائمة الطعام</h2>
+                <p>تذوق أفضل ما يقدمه مطبخنا العريق</p>
             </div>
 
-            <!-- Menu Filters -->
             <div class="menu-tabs">
                 <button class="tab-btn active">الكل</button>
                 <button class="tab-btn">الأطباق الرئيسية</button>
@@ -999,157 +606,76 @@
                 <button class="tab-btn">المشروبات</button>
             </div>
 
-            <!-- Menu Items Grid -->
             <div class="menu-grid">
                 <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="menu-img-wrapper">
-                        <span class="menu-badge">الأكثر طلباً</span>
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="أضلاع اللحم المشوية" class="menu-img">
-                    </div>
-                    <div class="menu-content">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ستيك لحم بقر" class="menu-img">
+                    <div class="menu-info">
                         <div class="menu-header">
-                            <h3 class="menu-title">أضلاع اللحم المشوية</h3>
+                            <span class="menu-title">ستيك اللحم البقري المشوي</span>
                             <span class="menu-price">120 ر.س</span>
                         </div>
-                        <p class="menu-desc">أضلاع لحم بقر متبلة بالأعشاب العطرية ومطهوة ببطء على الفحم، تقدم مع البطاطس المهروسة.</p>
-                        <div class="menu-footer">
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <span>(4.9)</span>
-                            </div>
-                            <a href="#reservation" class="order-btn">طلب الآن <i class="fa-solid fa-arrow-left"></i></a>
-                        </div>
+                        <p class="menu-desc">قطعة ستيك فاخرة مشوية على الفحم مع صوص المشروم والبطاطس المهروسة.</p>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="menu-img-wrapper">
-                        <span class="menu-badge">جديد</span>
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="بيتزا الترافل الفاخرة" class="menu-img">
-                    </div>
-                    <div class="menu-content">
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="سلمون مشوي" class="menu-img">
+                    <div class="menu-info">
                         <div class="menu-header">
-                            <h3 class="menu-title">بيتزا الترافل والماشروم</h3>
-                            <span class="menu-price">85 ر.س</span>
+                            <span class="menu-title">سلمون مشوي بالليمون</span>
+                            <span class="menu-price">95 ر.س</span>
                         </div>
-                        <p class="menu-desc">عجينة إيطالية هشة، زيت الترافل الأسود، جبنة الموزاريلا الطازجة مع الفطر المشروم الفاخر.</p>
-                        <div class="menu-footer">
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                                <span>(4.7)</span>
-                            </div>
-                            <a href="#reservation" class="order-btn">طلب الآن <i class="fa-solid fa-arrow-left"></i></a>
-                        </div>
+                        <p class="menu-desc">شريحة سلمون طازجة مشوية مع التوابل الخاصة والأعشاب الخضراء.</p>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
                 <div class="menu-item">
-                    <div class="menu-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" alt="سلمون مشوي" class="menu-img">
-                    </div>
-                    <div class="menu-content">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="سلطة صحية" class="menu-img">
+                    <div class="menu-info">
                         <div class="menu-header">
-                            <h3 class="menu-title">سلمون مشوي بالليمون</h3>
-                            <span class="menu-price">95 ر.س</span>
+                            <span class="menu-title">سلطة الكينوا الملكية</span>
+                            <span class="menu-price">45 ر.س</span>
                         </div>
-                        <p class="menu-desc">شريحة سلمون طازجة مشوية بصلصة الليمون والأعشاب، تقدم مع خضار سوتيه والرز الأبيض.</p>
-                        <div class="menu-footer">
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <span>(4.8)</span>
-                            </div>
-                            <a href="#reservation" class="order-btn">طلب الآن <i class="fa-solid fa-arrow-left"></i></a>
-                        </div>
+                        <p class="menu-desc">خليط الكينوا الطازجة مع الخضار الموسمية وزيت الزيتون البكر.</p>
                     </div>
                 </div>
 
                 <!-- Item 4 -->
                 <div class="menu-item">
-                    <div class="menu-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="سلطة الكينوا العضوية" class="menu-img">
-                    </div>
-                    <div class="menu-content">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="مشاوي مشكلة" class="menu-img">
+                    <div class="menu-info">
                         <div class="menu-header">
-                            <h3 class="menu-title">سلطة الكينوا والخضار</h3>
-                            <span class="menu-price">45 ر.س</span>
+                            <span class="menu-title">طبق المشاوي الفاخرة</span>
+                            <span class="menu-price">140 ر.س</span>
                         </div>
-                        <p class="menu-desc">كينوا عضوية، أفوكادو، طماطم كرزية، ورمّان مع تتبيلة الرمان الخاصة والليمون.</p>
-                        <div class="menu-footer">
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <span>(4.5)</span>
-                            </div>
-                            <a href="#reservation" class="order-btn">طلب الآن <i class="fa-solid fa-arrow-left"></i></a>
-                        </div>
+                        <p class="menu-desc">تشكيلة مختارة من الكباب، الشيش طاووق، وقطع اللحم المشوية.</p>
                     </div>
                 </div>
 
                 <!-- Item 5 -->
                 <div class="menu-item">
-                    <div class="menu-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="حلوى كيكة الشوكولاتة" class="menu-img">
-                    </div>
-                    <div class="menu-content">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="كيك شوكولاتة" class="menu-img">
+                    <div class="menu-info">
                         <div class="menu-header">
-                            <h3 class="menu-title">فوندان الشوكولاتة الذائبة</h3>
-                            <span class="menu-price">40 ر.س</span>
+                            <span class="menu-title">كيك الشوكولاتة الذائبة</span>
+                            <span class="menu-price">35 ر.س</span>
                         </div>
-                        <p class="menu-desc">كيكة شوكولاتة دافئة محشوة بالشوكولاتة الذائبة، تقدم مع آيس كريم الفانيليا الفاخر.</p>
-                        <div class="menu-footer">
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <span>(5.0)</span>
-                            </div>
-                            <a href="#reservation" class="order-btn">طلب الآن <i class="fa-solid fa-arrow-left"></i></a>
-                        </div>
+                        <p class="menu-desc">مولتن كيك داكنة تفيض بشوكولاتة بلجيكية مع آيس كريم الفانيليا.</p>
                     </div>
                 </div>
 
                 <!-- Item 6 -->
                 <div class="menu-item">
-                    <div class="menu-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="مشروب موهيتو التوت" class="menu-img">
-                    </div>
-                    <div class="menu-content">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عصير طبيعي" class="menu-img">
+                    <div class="menu-info">
                         <div class="menu-header">
-                            <h3 class="menu-title">موهيتو التوت المنعش</h3>
+                            <span class="menu-title">موهيتو التوت المنعش</span>
                             <span class="menu-price">25 ر.س</span>
                         </div>
-                        <p class="menu-desc">خليط منعش من التوت المشكل، النعناع الطازج، الليمون والماء الغازي مع الثلج المجهش.</p>
-                        <div class="menu-footer">
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                                <span>(4.6)</span>
-                            </div>
-                            <a href="#reservation" class="order-btn">طلب الآن <i class="fa-solid fa-arrow-left"></i></a>
-                        </div>
+                        <p class="menu-desc">مزيج منعش من التوت الطازج، النعناع، الليمون والماء الفوار.</p>
                     </div>
                 </div>
             </div>
@@ -1157,224 +683,84 @@
     </section>
 
     <!-- Reservation Section -->
-    <section class="reservation section-padding" id="reservation">
+    <section class="reservation" id="reservation">
         <div class="container">
-            <div class="reservation-wrapper">
-                <div class="section-header">
-                    <span class="section-subtitle">احجز مكانك</span>
-                    <h2 class="section-title">احجز طاولة الآن</h2>
-                </div>
-
-                <form class="reservation-form" onsubmit="event.preventDefault(); alert('تم استلام طلب الحجز بنجاح! سنتواصل معك قريباً لتأكيده.');">
-                    <div class="form-group">
-                        <label>الاسم الكامل</label>
-                        <input type="text" class="form-control" placeholder="أدخل اسمك هنا" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>رقم الهاتف</label>
-                        <input type="tel" class="form-control" placeholder="05xxxxxxxx" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>عدد الأشخاص</label>
-                        <select class="form-control" required>
-                            <option value="1">شخص واحد</option>
-                            <option value="2" selected>شخصين</option>
-                            <option value="4">4 الأشخاص</option>
-                            <option value="6">6 أشخاص أو أكثر</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>التاريخ</label>
-                        <input type="date" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>الوقت</label>
-                        <input type="time" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>مناسبة خاصة</label>
-                        <select class="form-control">
-                            <option value="none">بدون مناسبة</option>
-                            <option value="birthday">عيد ميلاد</option>
-                            <option value="anniversary">ذكرى زواج</option>
-                            <option value="business">عشاء عمل</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group form-group-full">
-                        <label>ملاحظات خاصة (اختياري)</label>
-                        <textarea class="form-control" rows="3" placeholder="أية طلبات خاصة بالنسبة للطاولة أو الطعام..."></textarea>
-                    </div>
-
-                    <div class="submit-btn-wrap">
-                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> تأكيد الحجز الآن</button>
-                    </div>
-                </form>
+            <div class="section-title">
+                <h2>احجز طاولتك</h2>
+                <p>تفضل بحجز طاولتك مسبقاً لضمان أفضل تجربة لك ولعائلتك</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">آراء زوارنا</span>
-                <h2 class="section-title">ماذا يقولون عنا؟</h2>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <p class="testimonial-text">"تجربة رائعة جداً! الطعام كان لذيذاً ومطهواً بإتقان، والديكورات أضافت أجواءً رومانسية ممتازة. ستكون وجهتي الدائمة."</p>
-                    <div class="user-info">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="عميل" class="user-img">
-                        <div>
-                            <h4 class="user-name">سارة أحمد</h4>
-                            <span class="user-role">ناقدة طعام</span>
-                        </div>
-                    </div>
+            <form class="reservation-form" onsubmit="event.preventDefault(); alert('تم استلام طلب الحجز بنجاح! سنتواصل معك قريباً.');">
+                <div class="form-group-row">
+                    <input type="text" class="form-control" placeholder="الاسم الكامل" required>
+                    <input type="tel" class="form-control" placeholder="رقم الهاتف" required>
                 </div>
-
-                <div class="testimonial-card">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <p class="testimonial-text">"خدمة ضيافة ممتازة وراعية لكل التفاصيل. أضلاع اللحم المشوية كانت الأفضل على الإطلاق! أحيي الشيف وفريق العمل."</p>
-                    <div class="user-info">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="عميل" class="user-img">
-                        <div>
-                            <h4 class="user-name">محمد العتيبي</h4>
-                            <span class="user-role">عميل دائم</span>
-                        </div>
-                    </div>
+                <div class="form-group-row">
+                    <input type="date" class="form-control" required>
+                    <input type="time" class="form-control" required>
                 </div>
-
-                <div class="testimonial-card">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <p class="testimonial-text">"اقمنا عشاء عمل في مركز مطعم الحديث وكان كل شيء متكامل: الهدوء، السرعة في إحضار الطلبات، ولذاذة الأطباق."</p>
-                    <div class="user-info">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="عميل" class="user-img">
-                        <div>
-                            <h4 class="user-name">مهندس خالد القحطاني</h4>
-                            <span class="user-role">رجل أعمال</span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <select class="form-control" required>
+                        <option value="" disabled selected>عدد الأشخاص</option>
+                        <option value="1">شخص واحد</option>
+                        <option value="2">شخصين</option>
+                        <option value="4">4 الأشخاص</option>
+                        <option value="6">عائلة (6+ أشخاص)</option>
+                    </select>
                 </div>
-            </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" placeholder="ملاحظات خاصة (اختياري)"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">تاكيد الحجز</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="#" class="logo">
-                        <i class="fa-solid fa-utensils"></i>
-                        مركز <span>مطعم الحديث</span>
-                    </a>
-                    <p>المكان الأمثل لعشاق المذاق الرفيع والأجواء العصرية. نسعد بضيافتكم وخدمتكم طوال أيام الأسبوع.</p>
+                <div class="footer-col">
+                    <h4>مركز المطعم الحديث</h4>
+                    <p>نقدم لك أفضل تجارب الطعام العصري في المملكة بتصاميم وأجواء فاخرة تناسب ذوقك الرفيع.</p>
                     <div class="social-links">
-                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="social-btn"><i class="fa-brands fa-snapchat"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
-
-                <div>
-                    <h3 class="footer-title">روابط سريعة</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#about">عن المطعم</a></li>
-                        <li><a href="#menu">قائمة الطعام</a></li>
-                        <li><a href="#reservation">حجز طاولة</a></li>
-                        <li><a href="#features">لماذا نحن</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h4>أوقات العمل</h4>
+                    <p>السبت - الخميس: 12:00 م - 12:00 ص</p>
+                    <p>الجمعة: 1:00 م - 1:00 ص</p>
                 </div>
-
-                <div>
-                    <h3 class="footer-title">ساعات العمل</h3>
-                    <ul class="footer-links">
-                        <li>السبت - الأربعاء: 12:00 م - 12:00 ص</li>
-                        <li>الخميس - الجمعة: 01:00 م - 02:00 ص</li>
-                        <li>وجبة الإفطار: 07:00 ص - 11:00 ص</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="footer-title">معلومات التواصل</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>طريق الملك فهد، حي العليا، الرياض، المملكة العربية السعودية</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-phone"></i>
-                            <span>+966 11 234 5678</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>info@modernrestaurant.com</span>
-                        </li>
-                    </ul>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> الرياض، طريق الملك فهد</p>
+                    <p><i class="fa-solid fa-phone"></i> 966500000000+</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@modernrestaurant.com</p>
                 </div>
             </div>
-        </div>
-
-        <div class="copyright">
-            <div class="container">
-                <p>جميع الحقوق محفوظة &copy; 2023 لـ <strong>مركز مطعم الحديث</strong></p>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 - مركز المطعم الحديث</p>
             </div>
         </div>
     </footer>
 
-    <!-- Simple JavaScript for Interactive Elements -->
+    <!-- JavaScript for Mobile Menu & Dynamic Interactions -->
     <script>
-        // Header Scroll Effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        const hamburger = id('hamburger');
+        const navLinks = id('navLinks');
 
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const navLinks = document.getElementById('nav-links');
+        function id(e) { return document.getElementById(e); }
 
-        menuBtn.addEventListener('click', () => {
+        hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
         });
 
-        // Close mobile menu when clicking a link
+        // Close menu when clicking on links
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                menuBtn.querySelector('i').classList.remove('fa-xmark');
-                menuBtn.querySelector('i').classList.add('fa-bars');
-            });
-        });
-
-        // Interactive Tab Buttons in Menu
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
             });
         });
     </script>
